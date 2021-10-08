@@ -6,6 +6,13 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
+    children: [
+      {
+        path: 'category',
+        loadChildren: () =>
+          import('../category/category.module').then((m) => m.CategoryModule),
+      },
+    ],
   },
 ];
 

@@ -11,6 +11,7 @@ export class DatabaseService<T extends Base> implements CrudI<T> {
 
   constructor(table: string) {
     this.supabase = createClient(this.SUPABASE_URL, this.SUPABASE_KEY);
+    this.table = table;
   }
 
   async get(t: T) {
