@@ -1,8 +1,14 @@
 import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { NbMenuItem, NbMenuService, NbSidebarService } from '@nebular/theme';
+import {
+  NbMenuBag,
+  NbMenuItem,
+  NbMenuService,
+  NbSidebarService,
+} from '@nebular/theme';
 import { User } from '@supabase/supabase-js';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,8 +28,21 @@ export class DashboardComponent implements OnInit {
     private router: Router
   ) {}
 
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   ngOnInit(): void {
     this.createMenu();
+    this.menuService
+      .onItemClick()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((menuBag: NbMenuBag) => {
+        if (menuBag.item.title == 'Logout') {
+          this.logout();
+        }
+      });
   }
 
   createMenu() {
@@ -54,5 +73,18 @@ export class DashboardComponent implements OnInit {
         link: '',
       },
     ];
+  }
+
+  toggle() {
+    this.sidebarService.toggle(true, 'menu-main');
+  }
+
+  logout() {
+    this.userService.signOut().then((value) => {
+      if (!value.error) {
+        localStorage.removeItem('@inventory-app:user');
+        this.router.navigate(['/login']);
+      }
+    });
   }
 }

@@ -1,6 +1,8 @@
 <nb-layout>
   <nb-layout-header>
-    <button click="toggle()" class="btn btn-lg">X</button>
+    <button (click)="toggle()" class="btn btn-lg">
+      <i class="fa fa-bars"></i>
+    </button>
   </nb-layout-header>
 
   <nb-sidebar tag="menu-main" state="expanded">
@@ -8,5 +10,7 @@
     <nb-menu tag="menu" [items]="items"></nb-menu>
   </nb-sidebar>
 
-  <nb-layout-column></nb-layout-column>
+  <nb-layout-column>
+    <router-outlet></router-outlet>
+  </nb-layout-column>
 </nb-layout>
