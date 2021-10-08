@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
       {
         title: 'Products',
         icon: 'shopping-cart-outline',
-        link: 'products',
+        link: 'product',
       },
       {
         title: 'Category',

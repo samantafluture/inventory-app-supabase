@@ -4,9 +4,10 @@
 @import "../node_modules/bootswatch/dist/minty/variables";
 @import "../node_modules/bootswatch/dist/minty/bootswatch";
 
-@import '../node_modules/font-awesome/scss/font-awesome.scss';
+@import "../node_modules/font-awesome/scss/font-awesome.scss";
 
 @import "~@nebular/theme/styles/globals";
 @include nb-install() {
   @include nb-theme-global();
 }
+
