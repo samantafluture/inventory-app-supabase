@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
             '@inventory-app:user',
             JSON.stringify(value.user?.email)
           );
-          this.router.navigateByUrl('/admin/dashboard/home');
+          this.router.navigateByUrl('/admin/dashboard');
           this.spinner.hide();
         }
       });
