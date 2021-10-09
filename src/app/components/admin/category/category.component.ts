@@ -23,13 +23,9 @@ export class CategoryComponent implements OnInit {
     private categoryService: CategoryService
   ) {}
 
-  ngOnInit(): void {
-    this.categoryService
-      .getAll(10)
-      .then((payload) => (this.categories = payload.data));
+  async ngOnInit(): Promise<void> {
+    this.categories = await this.categoryService.getAll(10);
     this.buildForm();
-    this.view = 'table';
-    // this.cancel();
   }
 
   cancel() {

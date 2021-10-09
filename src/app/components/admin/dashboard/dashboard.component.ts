@@ -55,7 +55,7 @@ export class DashboardComponent implements OnInit {
       {
         title: 'Stock Turnover',
         icon: 'calendar-outline',
-        link: 'stock-turnover',
+        link: 'turnover',
       },
       {
         title: 'Products',

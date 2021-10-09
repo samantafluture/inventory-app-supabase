@@ -31,7 +31,7 @@ export class DatabaseService<T extends Base> implements CrudI<T> {
     }
     const data = await query;
 
-    return data;
+    return data.data;
   }
 
   async add(t: T) {

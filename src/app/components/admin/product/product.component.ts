@@ -28,11 +28,8 @@ export class ProductComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.productService
-      .getAll(10)
-      .then((payload) => (this.products = payload.data));
-    const { data } = await this.categoryService.getAll();
-    this.categories = data;
+    this.products = await this.productService.getAll(10);
+    this.categories = await this.categoryService.getAll();
     this.buildForm();
     this.view = 'table';
   }

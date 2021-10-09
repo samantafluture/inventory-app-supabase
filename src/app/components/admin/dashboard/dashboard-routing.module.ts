@@ -17,6 +17,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('../product/product.module').then((m) => m.ProductModule),
       },
+      {
+        path: 'turnover',
+        loadChildren: () =>
+          import('../turnover/turnover.module').then((m) => m.TurnoverModule),
+      },
     ],
   },
 ];
